@@ -1,4 +1,6 @@
 # Python2.7 Web Directories and Files Scanner
+Web Directories and Files Scanner 網站目錄及檔案掃描工具
+
 [English Version Link](https://github.com/MiCoDer/WebTryTry/blob/master/WebTryTry.py)
 Support https/http Easy tool via Python2.7  (Require Dictionary.txt)
 
