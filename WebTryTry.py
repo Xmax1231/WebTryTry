@@ -1,8 +1,7 @@
 #!/usr/bin/env python
-# -*- coding:utf-8 -*-
 import sys, os, time, httplib
 import re
-list_http=[]  
+list_http=[]   
 
 def open_httptxt():   
     try:
@@ -16,9 +15,7 @@ def open_httptxt():
         for i in passlist:
             if i not in list_passlist:
                 list_passlist.append(i)
-
         E = 0 
-
         while E < len(list_passlist):
             past.append(list_passlist[E])  
             E = E + 1
@@ -26,9 +23,9 @@ def open_httptxt():
         return 0
 
 def BruteForce(host): 
-    GotResponse = [301,200,302,403] #收到哪些狀態要顯示出來
+    GotResponse = [301,200,302,403] #What httpStatus want to print
     try:
-        if host[-1] == "/": #去除網址尾端的斜線  google.com.tw/ <-  因為 Dictionary.txt 已經存在斜線了 -> /admin 
+        if host[-1] == "/": #Get rid of / , google.com.tw/ <-  Bks Dictionary.txt already exist -> /admin 
            host=host[0:-1]
         print '\n' + host.replace("https://","").replace("http://","") + '\n'
         for MyDict in past:
@@ -42,18 +39,18 @@ def BruteForce(host):
             response = connection.getresponse()
             if response.status in GotResponse:          
                 Finaldata="%s%s ---> %s %s"%(host,MyDict,response.status, response.reason)
-                print Finaldata + ' 存在 !!!!!!!!!\n'
+                print Finaldata + ' is Exists !!!!!!!!!\n'
         connection.close()
         return 1
     except:
-        print "[錯誤] 已經停止，可能是人為中斷或網址無法正常到達　！\n"
+        print "[Error] Stopped, Cause manually interrupt or URL Can't arrive !\n"
         pass
         return 0
 
 if __name__=='__main__':
-    print "\n===Python 網站目錄及檔案掃描工具 By Mico==="
+    print "\n===Python Web Directories and Files Scanner By Mico==="
     global  past  
     past = []
     open_httptxt()  
-    target=raw_input('輸入網址 : ')
+    target=raw_input('Input target URL : ')
     BruteForce(target)
