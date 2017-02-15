@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding:utf-8 -*-
 import sys, os, time, httplib
 import re
 list_http=[]  #httpPackage
@@ -35,24 +34,22 @@ def BruteForce(host):
             if 'https://' in host:
                 connection = httplib.HTTPSConnection(host.replace("https://",""),443,timeout=10)
             else:
+                host='http://' + host.replace("http://","")
                 connection = httplib.HTTPConnection(host.replace("http://",""),80,timeout=10)
             connection.request("GET",MyDict)
             response = connection.getresponse()
             if response.status in GotResponse:          
                 Finaldata="%s%s ---> %s %s"%(host,MyDict,response.status, response.reason)
-                print Finaldata + ' is Exists !!!!!!!!!'
-
+                print Finaldata + ' is Exists !!!!!!!!!\n'
         connection.close()
-	print '\n'
         return 1
     except:
-	print "[Error] Stopped, Cause manually interrupt or URL Can't arrive ！\n"
+        print "[Error] Stopped, Cause manually interrupt or URL Can't arrive !\n"
         pass
         return 0
 
 if __name__=='__main__':
-    print '\n'
-    print "===Python Web Directories and Files Scanner By Mico==="
+    print "\n===Python Web Directories and Files Scanner By Mico==="
     global  past  #Define Public variable
     past = []
     open_httptxt()  #Open txt & Wrtie
