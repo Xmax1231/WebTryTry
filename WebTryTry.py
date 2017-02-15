@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 import sys, os, time, httplib
 import re
-list_http=[]  #httpPackage
+list_http=[]   
 
-def open_httptxt():  #Open txt & Write
+def open_httptxt():   
     try:
         passlist = []
         list_passlist=[]
@@ -16,7 +16,7 @@ def open_httptxt():  #Open txt & Write
             if i not in list_passlist:
                 list_passlist.append(i)
 
-        E = 0 #get list[0]
+        E = 0 
         while E < len(list_passlist):
             past.append(list_passlist[E])  
             E = E + 1
@@ -26,7 +26,7 @@ def open_httptxt():  #Open txt & Write
 def BruteForce(host): 
     GotResponse = [301,200,302,403] #What httpStatus want to print
     try:
-        if host[-1] == "/": #Get rid of  google.com.tw/ <-  Bks MyDict.txt already exist -> /admin 
+        if host[-1] == "/": #Get rid of / , google.com.tw/ <-  Bks Dictionary.txt already exist -> /admin 
            host=host[0:-1]
         print '\n' + host.replace("https://","").replace("http://","") + '\n'
         for MyDict in past:
@@ -50,8 +50,8 @@ def BruteForce(host):
 
 if __name__=='__main__':
     print "\n===Python Web Directories and Files Scanner By Mico==="
-    global  past  #Define Public variable
+    global  past  
     past = []
-    open_httptxt()  #Open txt & Wrtie
+    open_httptxt()  
     target=raw_input('Input target URL : ')
     BruteForce(target)
