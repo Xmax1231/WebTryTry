@@ -16,7 +16,9 @@ def open_httptxt():
         for i in passlist:
             if i not in list_passlist:
                 list_passlist.append(i)
-        E = 0 #get list[0]
+
+        E = 0 
+
         while E < len(list_passlist):
             past.append(list_passlist[E])  
             E = E + 1
